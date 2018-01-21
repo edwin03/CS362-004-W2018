@@ -643,7 +643,7 @@ int getCost(int cardNumber)
   return -1;
 }
 
-int smithyCard (int handPos, int currentPlayer, struct gameState *state)
+void smithyCard (int handPos, int currentPlayer, struct gameState *state)
 {
   int i;//I added this here...
    //+3 Cards
@@ -654,7 +654,6 @@ int smithyCard (int handPos, int currentPlayer, struct gameState *state)
             
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
-    return 0;
 }
 
 void adventurerCard(int temphand[], int z, int currentPlayer, struct gameState *state)
