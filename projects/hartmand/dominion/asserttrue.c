@@ -13,7 +13,7 @@
  * DESCRIPTION: Takes a result and tests whether or not that result
  *   is true and optionally exits the program if it isn't.
  ******************************************************************************/
-void asserttrue(int test, int exitOnFail) {
+int asserttrue(int test, int exitOnFail) {
   if (test)
     printf("PASS");
   else
@@ -21,4 +21,6 @@ void asserttrue(int test, int exitOnFail) {
 
   if (!test && exitOnFail)
     exit(1);
+
+  return test;
 }

@@ -10,6 +10,24 @@ playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
 #To run playdom you need to entere: ./playdom <any integer number> like ./playdom 10*/
 
+randomtestcard1.out: randomtestcard1.c asserttrue.c dominion.o rngs.o
+	gcc -o randomtestcard1 $< asserttrue.c dominion.o rngs.o $(CFLAGS)
+	echo "Results for running randomtestcard1:" > $@
+	./randomtestcard1 >> $@
+	gcov dominion.c >> $@
+
+randomtestcard2.out: randomtestcard2.c asserttrue.c dominion.o rngs.o
+	gcc -o randomtestcard2 $< asserttrue.c dominion.o rngs.o $(CFLAGS)
+	echo "Results for running randomtestcard2:" > $@
+	./randomtestcard2 >> $@
+	gcov dominion.c >> $@
+
+randomtestadventurer.out: randomtestadventurer.c asserttrue.c dominion.o rngs.o
+	gcc -o randomtestadventurer $< asserttrue.c dominion.o rngs.o $(CFLAGS)
+	echo "Results for running randomtestadventurer:" > $@
+	./randomtestadventurer >> $@
+	gcov dominion.c >> $@
+
 unittestresult.out: asserttrue.c unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.o rngs.o
 	echo "Result for running unit tests:" > unittestresult.out
 
@@ -82,3 +100,4 @@ all: playdom player testDrawCard testBuyCard badTestDrawCard
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 	rm -f unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+	rm -f randomtestcard1 randomtestcard2 randomtestadventurer
