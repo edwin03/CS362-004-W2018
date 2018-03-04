@@ -1,0 +1,113 @@
+Dominion Unit Test Results
+--------------------------
+unittest1.c
+Test result for getCost():
+getCost(): PASS all card returned the correct cost.
+getCost(): PASS since it returned -1.
+File 'dominion.c'
+Lines executed:5.28% of 568
+Creating 'dominion.c.gcov'
+
+unittest2.c
+Test result for isGameOver():
+isGameOver(): PASS when there is no empty piles GAME CONTINUE
+isGameOver(): PASS when there's no province card and there is 1 card in each pile GAME END.
+isGameOver(): PASS when there is 3 empty piles GAME END.
+File 'dominion.c'
+Lines executed:7.04% of 568
+Creating 'dominion.c.gcov'
+
+unittest3.c
+Test result for whoseTurn():
+whoseTurn(): PASS since it is player 0 turns.
+whoseTurn(): PASS since it is player 1 turns.
+File 'dominion.c'
+Lines executed:7.39% of 568
+Creating 'dominion.c.gcov'
+
+unittest4.c
+Test result for updateCoins():
+updateCoins(): PASS there is 4 coins in inital hand.
+updateCoins(): PASS since it returned 9 coins.
+File 'dominion.c'
+Lines executed:23.42% of 568
+Creating 'dominion.c.gcov'
+
+cardtest1.c
+----------------- Testing Card: council_room ----------------
+
+ Test Result for Player 1
+PASSED: Player hand count
+FAILED: Opponent deck count expected 6, got 9
+PASSED: Opponent hand count.
+PASSED: Coin count.
+
+ Test Result for Player 2
+FAILED: Player hand count expected 3, got 2
+FAILED: Opponent deck count expected 0, got 8
+FAILED: Opponent hand count expected 6, got 8
+PASSED: Coin count.
+File 'dominion.c'
+Lines executed:29.58% of 568
+Creating 'dominion.c.gcov'
+
+cardtest2.c
+----------------- Testing Card: village ----------------
+
+ Test Result for Player 1
+PASSED: Player hand count
+PASSED: Player deck count
+PASSED: player played card count. 
+FAILED: Player action count expected 3, got 2
+PASSED: Opponent deck count.
+PASSED: Coin count.
+
+ Test Result for Player 2
+PASSED: Player hand count
+FAILED: Player deck count expected 9, got 10
+FAILED: player played card count expected 1, got 2
+FAILED: Player action count expected 3, got 2
+FAILED: Opponent deck count expected 4, got 3
+PASSED: Coin count.
+File 'dominion.c'
+Lines executed:30.99% of 568
+Creating 'dominion.c.gcov'
+
+cardtest3.c
+----------------- Testing Card: adventurer ----------------
+
+ Test Result for Player 1
+FAILED: Player hand count expected 6, got 7
+FAILED: player played card count expected 1, got 0
+PASSED: Opponent deck count.
+PASSED: Coin count.
+
+ Test Result for Player 2
+FAILED: Player hand count expected 1, got 0
+FAILED: player played card count expected 1, got 0
+FAILED: Opponent deck count expected 3, got 0
+PASSED: Coin count.
+File 'dominion.c'
+Lines executed:34.51% of 568
+Creating 'dominion.c.gcov'
+
+cardtest4.c
+----------------- Testing Card: smithy ----------------
+
+ Test Result for Player 1
+FAILED: Player hand count expected 7, got 6
+FAILED: Player deck count expected 2, got 3
+PASSED: Player played card count.
+PASSED: Opponent deck count.
+PASSED: Coin count.
+
+ Test Result for Player 2
+FAILED: Player hand count expected 2, got 0
+FAILED: Player deck count expected 7, got 10
+FAILED: Player played card count expected 1, got 2
+FAILED: Opponent deck count expected 2, got 1
+PASSED: Coin count.
+File 'dominion.c'
+Lines executed:35.92% of 568
+Creating 'dominion.c.gcov'
+

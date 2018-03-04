@@ -647,7 +647,7 @@ void smithyCard (int handPos, int currentPlayer, struct gameState *state)
 {
   int i;//I added this here...
    //+3 Cards
-    for (i = 0; i <= 3; i++)//I introduced a bug where the current player will only draw 4 card instead of 3 cards. I changed the logic from "i < 3" to "i <= 3"
+    for (i = 0; i < 3; i++)//I introduced a bug where the current player will only draw 4 card instead of 3 cards. I changed the logic from "i < 3" to "i <= 3"
     {
       drawCard(currentPlayer, state);
     }
@@ -667,7 +667,7 @@ void adventurerCard(int temphand[], int z, int currentPlayer, struct gameState *
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-    if (cardDrawn == copper || cardDrawn == silver)//I introduced a bug here, where I removed the "cardDrawn == gold" card which is not counted it when drawn
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)//I introduced a bug here, where I removed the "cardDrawn == gold" card which is not counted it when drawn
       drawntreasure++;
     else{
       temphand[z]=cardDrawn;
@@ -702,7 +702,7 @@ void council_roomCard (int currentPlayer, struct gameState *state, int handPos)
     {
       drawCard(i, state);
     }
-    i++;//I introduced this bug here, this will skip half of the players. First player will draw a card, then second wont, then 3rd will draw, etc.
+    //i++;//I introduced this bug here, this will skip half of the players. First player will draw a card, then second wont, then 3rd will draw, etc.
   }
               
   //put played card in played card pile
@@ -713,7 +713,7 @@ void council_roomCard (int currentPlayer, struct gameState *state, int handPos)
 void great_hallCard(int currentPlayer, struct gameState *state, int handPos)
 {
   //+1 Card
-  //drawCard(currentPlayer, state);//I introduced bug here, by removing draw card
+  drawCard(currentPlayer, state);//I introduced bug here, by removing draw card
         
   //+1 Actions
   state->numActions++;

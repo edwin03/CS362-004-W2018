@@ -1,0 +1,98 @@
+*********************************************************************************
+Reported by: Edwin Rubio
+Date: 03/04/2018
+Email: rubioed@oregonstate.edu
+
+Bug 1:
+
+Software Under Test: Alvins Le's Dominion 
+Platform: Linux
+
+Description: Card only allows two actions instead of adding the number of actions.
+
+Card Affected: Village
+Village Description: +1 Card, +2 Actions
+
+Summary:
+This bug was found when I executed my "cardtest2.c" file on top of Alvin Le refactored "dominion.c" code. I noticed that it always returned 2 for the actions counter instead of adding two the number of the actions. 
+
+Here is the snippet where of my "cardtest2.c" test output:
+
+Test Result for Player 1
+	PASSED: Player hand count
+	PASSED: Player deck count
+	PASSED: player played card count. 
+	FAILED: Player action count expected 3, got 2 <--- returned 2 actions instead of 3
+	PASSED: Opponent deck count.
+	PASSED: Coin count.
+
+	Test Result for Player 2
+	PASSED: Player hand count
+	FAILED: Player deck count expected 9, got 10
+	FAILED: player played card count expected 1, got 2
+	FAILED: Player action count expected 3, got 2 <--- returned 2 actions instead of 3
+	FAILED: Opponent deck count expected 4, got 3
+	PASSED: Coin count.
+
+I think that the bug could be related to using the incorrect math operator. After looking at the source code inside the "Village_effect" function I see that the assignment "=" operator was used instead of the adding "+" operator.
+
+	void village_effect(struct gameState *state, int handPos)
+	{
+		int currentPlayer = whoseTurn(state);
+
+		//+1 Card
+		drawCard(currentPlayer, state);
+
+		//+2 Actions
+		state->numActions = 2; //<----We can see here that "=" was used instead of "+" 
+
+		//discard played card from hand
+		discardCard(handPos, currentPlayer, state, 0);
+	}
+
+*********************************************************************************
+
+Reported by: Edwin Rubio
+Date: 03/04/2018
+Email: rubioed@oregonstate.edu
+
+Bug 2:
+
+Software Under Test: Alvins Le's Dominion 
+Platform: Linux
+
+Description: Only two cards are being drawn instead of three cards.
+
+Card Affected: Smithy
+Smithy Description: +3 Cards
+
+Summary:
+This bug was found when I executed my "cardtest4.c" file on top of Alvin Le refactored "dominion.c" code. I noticed that it always returned 1 less than the expected number of cards in the players hand. So I’m thinking that the "drawCard()" function is only being called twice rather than 3 times. 
+
+Here is the snippet where of my "cardtest4.c" test output:
+
+	Test Result for Player 1
+	FAILED: Player hand count expected 7, got 6 //<---- hand count should be 7 after drawing 3
+	FAILED: Player deck count expected 2, got 3
+	PASSED: Player played card count.
+	PASSED: Opponent deck count.
+	PASSED: Coin count.
+
+Here is a snippet of Alvin's "smithy_effect()" function:
+
+	void smithy_effect(struct gameState *state, int handPos)
+	{
+		int currentPlayer = whoseTurn(state);
+
+		//+3 Cards
+		int i;
+		for (i = 1; i < 3; i++) //<----the "drawCard()" function is called twice since 
+		{
+			drawCard(currentPlayer, state);
+		}
+
+		//discard card from hand
+		discardCard(handPos, currentPlayer, state, 0);
+	}
+	
+*********************************************************************************
