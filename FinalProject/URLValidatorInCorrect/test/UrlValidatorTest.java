@@ -47,8 +47,8 @@ public class UrlValidatorTest extends TestCase {
                            result = validator.isValid(url);
                            expected = scheme.valid & authority.valid & port.valid & path.valid & query.valid;
 
-                           System.out.println(url);
-                           // System.out.println(count);
+                           if (expected != result)
+                               System.out.println("FAILED: testIsValid(): " + url);
 
                            assertEquals(url, expected, result);
                        }
@@ -56,6 +56,8 @@ public class UrlValidatorTest extends TestCase {
                }
            }
        }
+
+       System.out.println("PASSED: testIsValid()");
 
    }
 
