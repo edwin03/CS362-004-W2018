@@ -10,7 +10,22 @@ public class UrlValidatorTest extends TestCase {
 
    public void testManualTest()
    {
-       //You can use this function to implement your manual testing
+      //Varible that holds the test result
+      boolean retResult;
+
+      //You can use this function to implement your manual testing
+      //Create a UrlValidator object 
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+      //Manual tests, by using console screen to print the return value of "isValid"
+      retResult = urlVal.isValid("http://www.google.com:27951");
+      System.out.println(retResult);
+
+      retResult = urlVal.isValid("http://www.google.com");
+      System.out.println(retResult);
+
+      retResult = urlVal.isValid("http://192.168.1.168");
+      System.out.println(retResult);
 
    }
 
