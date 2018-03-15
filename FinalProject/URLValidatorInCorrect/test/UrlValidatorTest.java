@@ -31,7 +31,6 @@ public class UrlValidatorTest extends TestCase {
    public void testIsValid()
    {
        UrlValidator validator = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-       System.out.println(testUrlParts.length);
 
        int count = 0;
        String url;
